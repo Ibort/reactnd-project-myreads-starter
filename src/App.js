@@ -25,6 +25,11 @@ class BooksApp extends React.Component {
         .then(books => this.setState({ yourBooks:books }))
     }
 
+    updateBookShelf= (bookId, state) => {
+        BooksAPI.update(bookId, state)
+        .then(() => this.getYourBooks())
+    }
+
     closeSearch = () => {
         this.setState({ showSearchPage: false })
     }
@@ -33,13 +38,13 @@ class BooksApp extends React.Component {
         return(
             <div className="App">
                  {this.state.showSearchPage ? (
-                     <SearchBook closeSearch={this.closeSearch} />
+                     <SearchBook closeSearch={this.closeSearch} updateBookShelf={this.updateBookShelf}/>
                  ) : (
                 <div className="list-books">
                     <div className="list-books-title">
                         <h1>MyReads</h1>
                     </div>
-                    <BookShelf yourBooks={this.state.yourBooks}/>
+                    <BookShelf yourBooks={this.state.yourBooks} updateBookShelf={this.updateBookShelf}/>
                     <div className="open-search">
                         <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
                     </div>

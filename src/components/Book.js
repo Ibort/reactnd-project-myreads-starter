@@ -14,13 +14,20 @@ class Book extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({
-            value: this.props.bookData.shelf
-        })
+        if(this.props.bookData.shelf) {
+            this.setState({
+                value: this.props.bookData.shelf
+            })
+        }
+        else{
+            this.setState({
+                value: 'none'
+            }) 
+        }
     }
 
     updateValue = (e) => {
-        console.log(e);
+        this.props.updateBookShelf({id:this.props.bookData.id} ,e)
     }
 
     render() {

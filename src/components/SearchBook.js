@@ -30,7 +30,7 @@ class SearchBook extends React.Component {
         if(this.state.bookList.length > 0){
             return(
                 <div className="search-books-results">
-                    <BookListGrid books={this.state.bookList}/>
+                    <BookListGrid books={this.state.bookList} updateBookShelf={this.props.updateBookShelf}/>
                 </div>
             )
         }
@@ -58,9 +58,9 @@ class SearchBook extends React.Component {
                             onChange={(e) => {this.updateValue(e.target.value)}}
                         
                         />
-                        <this.listSearch />
                     </div>
                 </div>
+                <this.listSearch />
             </div>
         )
     }
