@@ -8,9 +8,21 @@ const BooksShelf = (props) => {
     const read = props.yourBooks.filter(books => books.shelf === "read")
     return(
         <div>
-            <BooksReadStat name="Currently Reading"  books={currR} updateBookShelf={props.updateBookShelf}/>
-            <BooksReadStat name="Want to Read" books={wantR} updateBookShelf={props.updateBookShelf}/>
-            <BooksReadStat name="Read" books={read} updateBookShelf={props.updateBookShelf}/>
+            <BooksReadStat 
+                name="Currently Reading"  
+                books={currR} 
+                updateBookShelf={props.updateBookShelf}
+            />
+            <BooksReadStat 
+                name="Want to Read" 
+                books={wantR} 
+                updateBookShelf={props.updateBookShelf}
+            />
+            <BooksReadStat 
+                name="Read" 
+                books={read} 
+                updateBookShelf={props.updateBookShelf}
+            />
         </div>
     )
 }

@@ -28,7 +28,9 @@ class Book extends React.Component {
 
     updateValue = (e) => {
         this.props.updateBookShelf({id:this.props.bookData.id} ,e)
+        if(this.props.history) this.props.history.push('/');
     }
+
 
     render() {
         return(
@@ -36,8 +38,10 @@ class Book extends React.Component {
                     <div className="book">
                         <div className="book-top">
                             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.bookData.imageLinks.thumbnail})` }}></div>
-                            <div className="book-shelf-changer">
-                                <select onChange={(e) => {this.updateValue(e.target.value)}} value={this.state.value}>
+                            <div className="book-shelf-changer" style={{ backgroundColor: this.state.value === 'none' ? 'green' : 'blue'}}>
+                                <select 
+                                    onChange={(e) => {this.updateValue(e.target.value)}} 
+                                    value={this.state.value}>
                                     <option value="move" disabled>Move to...</option>
                                     <option value="currentlyReading">Currently Reading</option>
                                     <option value="wantToRead">Want to Read</option>

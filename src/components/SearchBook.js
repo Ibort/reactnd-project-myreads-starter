@@ -1,6 +1,7 @@
 import React from 'react'
 import * as BooksAPI from '../BooksAPI'
 import BookListGrid from './BookListGrid'
+import { Link } from 'react-router-dom'
 
 class SearchBook extends React.Component {
     state = {
@@ -17,7 +18,7 @@ class SearchBook extends React.Component {
             BooksAPI.search(this.state.value)
             .catch(error => console.log(error))
             .then((books) => {
-                if(books !== undefined){
+                if(books){
                     this.setState({
                         bookList: books
                     })
@@ -30,7 +31,12 @@ class SearchBook extends React.Component {
         if(this.state.bookList.length > 0){
             return(
                 <div className="search-books-results">
-                    <BookListGrid books={this.state.bookList} updateBookShelf={this.props.updateBookShelf}/>
+                    <BookListGrid 
+                        books={this.state.bookList} 
+                        updateBookShelf={this.props.updateBookShelf}
+                        history={this.props.history}
+                        yourBooks={this.props.yourBooks}
+                    />
                 </div>
             )
         }
@@ -41,16 +47,12 @@ class SearchBook extends React.Component {
         return(
             <div className="search-books">
                 <div className="search-books-bar">
-                    <button className="close-search" onClick={() => this.props.closeSearch()}>Close</button>
+                    <Link
+                        to="/"
+                    ><button className="close-search">Close</button>
+                    </Link>
+                    
                     <div className="search-books-input-wrapper">
-                        {/*
-                        NOTES: The search from BooksAPI is limited to a particular set of search terms.
-                        You can find these search terms here:
-                        https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-                        However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-                        you don't find a specific author or title. Every search is limited by search terms.
-                        */}
                         <input 
                             type="text" 
                             placeholder="Search by title or author"

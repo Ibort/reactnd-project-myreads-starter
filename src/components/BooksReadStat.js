@@ -7,7 +7,10 @@ const BooksReadStat = (props) => {
             <h2 className="bookshelf-title">{props.name}</h2>
             <div className="bookshelf-books">
                 {props.books.length > 0 && 
-                    <BookListGrid books={props.books} updateBookShelf={props.updateBookShelf}/>
+                    <BookListGrid 
+                        books={props.books} 
+                        updateBookShelf={props.updateBookShelf}
+                    />
                 } 
             </div>
         </div>

@@ -3,15 +3,10 @@ import './App.css'
 import BookShelf from './components/BookShelf';
 import SearchBook from './components/SearchBook'
 import * as BooksAPI from './BooksAPI'
+import { Route, Link } from 'react-router-dom'
 
-class BooksApp extends React.Component {
-    constructor() {
-        super();
-        this.timeout =  0;
-    }
-    
+class BooksApp extends React.Component {    
     state = {
-        showSearchPage: false,
         searchedBooks : [],
         yourBooks: []
     }
@@ -30,26 +25,34 @@ class BooksApp extends React.Component {
         .then(() => this.getYourBooks())
     }
 
-    closeSearch = () => {
-        this.setState({ showSearchPage: false })
-    }
-
     render() {
         return(
             <div className="App">
-                 {this.state.showSearchPage ? (
-                     <SearchBook closeSearch={this.closeSearch} updateBookShelf={this.updateBookShelf}/>
-                 ) : (
-                <div className="list-books">
-                    <div className="list-books-title">
-                        <h1>MyReads</h1>
+                <Route exact path='/' render={() => (
+                    <div className="list-books">
+                        <div className="list-books-title">
+                            <h1>MyReads</h1>
+                        </div>
+                        <BookShelf 
+                            yourBooks={this.state.yourBooks} 
+                            updateBookShelf={this.updateBookShelf}
+                        />
+                        <div className="open-search">
+                            <Link
+                                to='/search'
+                            ><button>Add a book</button>
+                            </Link>
+                            
+                        </div>
                     </div>
-                    <BookShelf yourBooks={this.state.yourBooks} updateBookShelf={this.updateBookShelf}/>
-                    <div className="open-search">
-                        <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
-                    </div>
-                </div>
-                 )}
+                )} />
+                <Route path='/search' render={({ history }) => (
+                    <SearchBook 
+                        updateBookShelf={this.updateBookShelf}
+                        yourBooks={this.state.yourBooks}
+                        history={history}
+                    />
+                )} />
             </div>
         )
     }
