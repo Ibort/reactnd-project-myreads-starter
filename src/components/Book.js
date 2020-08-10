@@ -33,11 +33,12 @@ class Book extends React.Component {
 
 
     render() {
+        const thumbnail = this.props.bookData.imageLinks ? this.props.bookData.imageLinks.thumbnail : '';
         return(
                 <li key={this.props.bookData.id}>
                     <div className="book">
                         <div className="book-top">
-                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.bookData.imageLinks.thumbnail})` }}></div>
+                            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${thumbnail})` }}></div>
                             <div className="book-shelf-changer" style={{ backgroundColor: this.state.value === 'none' ? 'green' : 'blue'}}>
                                 <select 
                                     onChange={(e) => {this.updateValue(e.target.value)}} 
