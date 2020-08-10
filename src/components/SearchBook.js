@@ -9,26 +9,26 @@ class SearchBook extends React.Component {
         bookList: []
     }
 
+    bookApi= () => {
+        BooksAPI.search(this.state.value)
+        .catch(error => console.log(error))
+        .then((books) => {
+            if(books){
+                this.setState({
+                    bookList: books
+                })
+            } else{
+                this.setState({
+                    bookList: []
+                })
+            }
+        })
+    }
+
     updateValue = (value) => {
         this.setState({
             value:value
-        })
-        if(this.timeout) clearTimeout(this.timeout);
-        this.timeout = setTimeout(() => {
-            BooksAPI.search(this.state.value)
-            .catch(error => console.log(error))
-            .then((books) => {
-                if(books){
-                    this.setState({
-                        bookList: books
-                    })
-                } else{
-                    this.setState({
-                        bookList: []
-                    })
-                }
-            })
-        }, 800)
+        }, this.bookApi)  
     }
 
     listSearch = () => {
@@ -38,7 +38,6 @@ class SearchBook extends React.Component {
                     <BookListGrid 
                         books={this.state.bookList} 
                         updateBookShelf={this.props.updateBookShelf}
-                        history={this.props.history}
                         yourBooks={this.props.yourBooks}
                     />
                 </div>

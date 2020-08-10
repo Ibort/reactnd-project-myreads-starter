@@ -13,7 +13,6 @@ const BookListGrid = (props) => {
                                     key={book.id} 
                                     bookData={isOnYourSelf[0]} 
                                     updateBookShelf={props.updateBookShelf}
-                                    history={props.history}
                                     />
                     }
                     else {
@@ -21,7 +20,6 @@ const BookListGrid = (props) => {
                                     key={book.id} 
                                     bookData={book} 
                                     updateBookShelf={props.updateBookShelf}
-                                    history={props.history}
                                     />
                     }
                     

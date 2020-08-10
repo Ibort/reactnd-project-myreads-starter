@@ -20,7 +20,9 @@ class Book extends React.Component {
 
     updateValue = (e) => {
         this.props.updateBookShelf({id:this.props.bookData.id} ,e)
-        if(this.props.history) this.props.history.push('/');
+        this.setState({
+            value: e
+        })
     }
 
     authList = (list) => {
