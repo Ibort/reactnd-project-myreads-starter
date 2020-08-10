@@ -22,6 +22,10 @@ class SearchBook extends React.Component {
                     this.setState({
                         bookList: books
                     })
+                } else{
+                    this.setState({
+                        bookList: []
+                    })
                 }
             })
         }, 800)
