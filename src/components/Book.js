@@ -1,13 +1,5 @@
 import React from 'react';
 
-const authList = (list) => {
-    if(list){
-      return  list.map(auth => {
-            return <div key={auth}>{auth}</div>
-        })
-    }
-}
-
 class Book extends React.Component {
     state = {
         value:''
@@ -31,6 +23,13 @@ class Book extends React.Component {
         if(this.props.history) this.props.history.push('/');
     }
 
+    authList = (list) => {
+        if(list){
+          return  list.map(auth => {
+                return <div key={auth}>{auth}</div>
+            })
+        }
+    }
 
     render() {
         const thumbnail = this.props.bookData.imageLinks ? this.props.bookData.imageLinks.thumbnail : '';
@@ -52,7 +51,7 @@ class Book extends React.Component {
                             </div>
                         </div>
                         <div className="book-title">{this.props.bookData.title} </div>
-                        <div className="book-authors">{authList(this.props.bookData.authors)}</div>
+                        <div className="book-authors">{this.authList(this.props.bookData.authors)}</div>
                     </div>
                 </li>
         )
