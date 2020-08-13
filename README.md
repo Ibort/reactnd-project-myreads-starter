@@ -1,5 +1,27 @@
 # MyReads Project
 
+# Description
+
+With this app you can manage your books into 3 shelves as read, currently read, want to read. Also you can search for new books what you can put on your digital shelf to follow your progress.
+
+# App Info
+
+The main site stand from the 3 shelves:
+
+* Currently Reading
+* Want to Read
+* Read
+
+You can organize your on the shelves as you want to follow your progress with them, it just book so no pages and so on.
+With the buttons at the bottom of each book can you move from one shelf to another or discard it from your shelf.
+
+For new books use the search button on the bottom right of the page, and search for the book or books what you want to put on your shelves. On the search page the books what are already on your shelf marked with blue button and also if you click on the drop down menu the current shelf will be selected, the new one are marked green. 
+You can change either new or old shelf position by selecting it from the dropdown menu. It will immediately appear or disappear from your bookshelf.
+
+
+
+# Overview
+
 This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
 
 Of course, you are free to start this project from scratch if you wish! Just be sure to use [Create React App](https://github.com/facebookincubator/create-react-app) to bootstrap the project.

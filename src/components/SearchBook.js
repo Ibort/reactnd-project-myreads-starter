@@ -13,15 +13,9 @@ class SearchBook extends React.Component {
         BooksAPI.search(this.state.value)
         .catch(error => console.log(error))
         .then((books) => {
-            if(books){
-                this.setState({
-                    bookList: books
-                })
-            } else{
-                this.setState({
-                    bookList: []
-                })
-            }
+            this.setState({
+                bookList: books
+            })
         })
     }
 
@@ -32,21 +26,24 @@ class SearchBook extends React.Component {
     }
 
     listSearch = () => {
-        if(this.state.bookList.length > 0){
-            return(
-                <div className="search-books-results">
-                    <BookListGrid 
-                        books={this.state.bookList} 
-                        updateBookShelf={this.props.updateBookShelf}
-                        yourBooks={this.props.yourBooks}
-                    />
-                </div>
-            )
+        if(this.state.bookList){
+            if(this.state.bookList.length > 0){
+                return(
+                    <div className="search-books-results">
+                        <BookListGrid 
+                            books={this.state.bookList} 
+                            updateBookShelf={this.props.updateBookShelf}
+                            yourBooks={this.props.yourBooks}
+                        />
+                    </div>
+                )
+            }
         }
         return null
     }
 
     render() {
+        console.log(this.state.bookList);
         return(
             <div className="search-books">
                 <div className="search-books-bar">
