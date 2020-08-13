@@ -43,7 +43,6 @@ class SearchBook extends React.Component {
     }
 
     render() {
-        console.log(this.state.bookList);
         return(
             <div className="search-books">
                 <div className="search-books-bar">
